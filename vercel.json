@@ -1,13 +1,8 @@
 {
+  "version": 2,
   "functions": {
-    "api/index.mjs": {
-      "runtime": "nodejs18.x"
+    "api/index.js": {
+      "runtime": "@vercel/node@5.4.1"
     }
-  },
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "api/index.mjs"
-    }
-  ]
+  }
 }

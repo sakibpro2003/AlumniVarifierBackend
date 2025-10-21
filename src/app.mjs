@@ -31,6 +31,14 @@ export function createApp() {
   app.use(express.json({ limit: "1mb" }));
   app.use(morgan(config.env === "production" ? "combined" : "dev"));
 
+  // Lightweight root responder so Vercel previews don't hit the 404 handler
+  app.get("/", (_req, res) => {
+    res.json({
+      message: "Alumni Verifier API is running.",
+      health: "/api/health",
+    });
+  });
+
   app.get("/api/health", (_req, res) => {
     res.json({
       status: "ok",
